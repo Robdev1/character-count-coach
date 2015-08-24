@@ -40,11 +40,11 @@ function textCounter(textField, showCountField) {
 </head>
 <A HREF='charcountcoach1.php'>Do it again?</a><hr>
  <h1>Character Count Coach</h1>
-This page will assess a short section of text. First and foremost returning its number of characters. Then it will provide rudimentary assessments of its suitability, judged solely on that character count, for its use as a Tweet, a meta description in the head section of a Web page, an IRC post,
-a headline or as the blurb for a Facebook post. Any suggestions that are readily made on the basis of the character count will be given.
+This page analyzes a short section of text, first and foremost returning both a character count of the text and a countdown of how many remaining characters are allowed under different uses cases.<p>It provides rudimentary assessments of the text's suitability, judged solely character count, for its use as a headline, a Tweet, a metadescription in the head section of a Web page, an IRC post,
+ or as a Facebook post. Suggestions that can be made on soley on the basis of the character count are given.
 <p><!-- FORM CODE FOR BIG H1 HEAD -->
 <FORM METHOD="GET" ACTION="charcountcoach2.php">
-If you modify the text, the box to the right will monitor the number of characters. <input readonly type="text" name="countDisplay" size="3" maxlength="3" value="0"> <br>
+The box to the right gives a running count of the number of characters you have typed. <input readonly type="text" name="countDisplay" size="5" maxlength="4" value="0"> <br>
 <TEXTAREA  NAME="typedtext" ROWS=2 COLS=114 onKeyDown="textCounter(this.form.typedtext,this.form.countDisplay);" onKeyUp="textCounter(this.form.typedtext,this.form.countDisplay);" WRAP=soft><?php echo $typedtext ?></textarea>
 <br>
 
@@ -93,7 +93,7 @@ echo '<strong STYLE=\'font-size:1.05em\'>H1 Headline</strong> 54 characters<br>'
      } 
  if ($charcount < 67) {
    echo 'CSS stylings could alter a headline\'s look.<br>';   echo 'You would have about <strong>', $h1headlineremainder66 ,'</strong> characters left if styling caused a 66-character headline across 600 pixels.<br>';
-   echo ("Here is what the headline above would look like in a<br> <strong>$hdldvwidth</strong> pixel-wide div");   echo 'at <strong>', $hdldvfontpctmod ,'</strong> percent of its standard H1 font size.<br>';
+   echo ("Here is what the headline above would look like in a<br> <strong>$hdldvwidth</strong> pixel-wide div ");   echo 'at <strong>', $hdldvfontpctmod ,'</strong> percent of its standard H1 font size.<br>';
    echo '<div STYLE=\'width:',  $hdldvwidth , '; padding:2px; border: 1px solid blue; margin:2px; font-size: ' , $hdldvfontpctmod , '%\'><h1>' , $typedtext , '</h1></div>';    
 ?>
 
