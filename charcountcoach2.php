@@ -42,7 +42,7 @@ function textCounter(textField, showCountField) {
  <h1>Character Count Coach</h1>
 This page will assess a short section of text. First and foremost returning its number of characters. Then it will provide rudimentary assessments of its suitability, judged solely on that character count, for its use as a Tweet, a meta description in the head section of a Web page, an IRC post,
 a headline or as the blurb for a Facebook post. Any suggestions that are readily made on the basis of the character count will be given.
-<p>
+<p><!-- FORM CODE FOR BIG H1 HEAD -->
 <FORM METHOD="GET" ACTION="charcountcoach2.php">
 If you modify the text, the box to the right will monitor the number of characters. <input readonly type="text" name="countDisplay" size="3" maxlength="3" value="0"> <br>
 <TEXTAREA  NAME="typedtext" ROWS=2 COLS=114 onKeyDown="textCounter(this.form.typedtext,this.form.countDisplay);" onKeyUp="textCounter(this.form.typedtext,this.form.countDisplay);" WRAP=soft><?php echo $typedtext ?></textarea>
@@ -51,12 +51,10 @@ a headline or as the blurb for a Facebook post. Any suggestions that are readily
 
 <span STYLE='font-size:.70em;'>*********10********20********30********40********50********60********70********</a></span>
 <br>
-<input type=submit value=Submit> for a use case analysis displayed below. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<input type=reset  value=reset>
+<input type=submit value=SUBMIT style="width:120px; height:150px;font-weight:bold;"> for a use case analysis displayed below. &nbsp;&nbsp;<input type=reset  value=reset>
 <BR>
-
-</FORM>
-
+</FORM>
+<!-- END FORM CODE FOR BIG H1 HEAD -->
 <?php
 //The astrericks below, and above under the textarea, give a rudimentary scale to assess character string length
 echo '*********10********20********30********40********50********60********70********<br>';
@@ -79,7 +77,7 @@ $IRCfloodingoverage = $noIRCflooding * -1;
 #fb vars$fbremainder = 477 - $charcount;
 $fbover = $fbremainder * -1;
 #tech constraint vars$char80linedrupalcode = 80 - $charcount;
-$chor80drupcodeover = $char80linedrupalcode * -1;$limit256char = 256 - $charcount;  
+$char80drupcodeover = $char80linedrupalcode * -1;$limit256char = 256 - $charcount;  
   
 echo '<hr>';
 //THE WRITING STYLE section refers to usages that the writer has control over. In most cases a longer-than-optimal character string will work technically, but it would either bad or be poor form. Twitter will not post more than 140 characters and will self-correct you. END NOTE:  WRITING STYLE
@@ -99,19 +97,19 @@ echo '<strong STYLE=\'font-size:1.05em\'>H1 Headline</strong> 54 characters<br>'
    echo '<div STYLE=\'width:',  $hdldvwidth , '; padding:2px; border: 1px solid blue; margin:2px; font-size: ' , $hdldvfontpctmod , '%\'><h1>' , $typedtext , '</h1></div>';    
 ?>
 
-
+<!-- FORM CODE ALTERING CSS FOR HEAD-->
 <FORM METHOD="GET" ACTION="charcountcoach2.php"> 
 Try a new divisor width, in pixels:  
 <TEXTAREA NAME="hdldvwidth2" ROWS=1 COLS=6 WRAP=soft><?php echo $hdldvwidth ?></textarea> 
 <br>
-and/or a new font size in percentage:
-<TEXTAREA NAME="hdldvfontpctmod2" ROWS=1 COLS=4 WRAP=soft><?php echo $hdldvfontpctmod  ?></textarea>
+and/or a new font size in percentage:
+<TEXTAREA NAME="hdldvfontpctmod2" ROWS=1 COLS=4 WRAP=soft><?php echo $hdldvfontpctmod  ?></textarea>
 <br>
-Change the Headline if necessary:
+Change the Headline if necessary:
  <TEXTAREA NAME="typedtext" ROWS=2 COLS=114 WRAP=soft> <?php echo $typedtext ?></textarea>
 <br><input type=submit value="submit"> <input type=reset  value="reset">
 </FORM>  
-
+<!-- END FORM CODE ALTERING CSS -->
 <?php        
     } else {
           echo 'This text is also too long for smaller headline fonts, especially if there is less space for it. For example, your text is <strong>' ,  $head66over , '</strong> characters too long for a 66-character headline across 600 pixels.<p>';
@@ -146,9 +144,9 @@ echo '<p>';
     echo 'Your text is <strong>' , $metadescrip_overage , '</strong> characters too long for a metadescription.';
     }
     echo '<p>';
-    echo '<strong STYLE=\'font-size:1.05em\'>There\'s No Flooding on Internet Relay Chat</strong> 365 characters<br>';
+#IRC ANALSYIS  echo '<strong STYLE=\'font-size:1.05em\'>There\'s No Flooding on Internet Relay Chat</strong> 365 characters<br>';
   if ($charcount < 366) {        
-    echo ("IRC netiquette limits posts to four lines  (about 365 characters).");    echo (" Posting more is called <i>flooding.</i> <br>  Your text could have <strong>' ,     $noIRCflooding ,</strong> ");    echo (" more characters before you flood a chat room with long messages.<br> The text box above is designed to display up to 280 characters over two lines.");
+    echo ("IRC netiquette limits posts to four lines  (about 365 characters).");    echo (" Posting more is called <i>flooding.</i> <br>  Your text could have <strong>$noIRCflooding</strong> ");    echo (" more characters before you flood a chat room with long messages.<br> The text box above is designed to display up to 280 characters over two lines.");
       } else {
         echo 'You\'re flooding dude! Cut <strong>' , $IRCfloodingoverage , '</strong> characters from your IRC post.';
       }
@@ -160,14 +158,13 @@ echo '<strong STYLE=\'font-size:1.05em\'>256-Character Limit</strong><br>';
  echo '<p>';
 
    
-
+# Drupal 80 characters per line standard
      echo '<strong STYLE=\'font-size:1.05em\'>Drupal Code Standard of 80 Characters Per Line</strong><br>';
-   if ($charcount < 477) {        
-  echo ("<A HREF=\'https://www.drupal.org/coding-standards\'>Drupal coding standards</a> requires 80 characters per line.");   echo ("Your text could have <strong>' , $char80linedrupalcode , '</strong> more characters and meet this standard.';
-   } else {
-     <A HREF=\'https://www.drupal.org/coding-standards\'>Drupal coding standards</a> requires 80 characters per line.");    echo (" Cut <strong>' , $chor80drupcodeover , '</strong> characters from your your line of Drupal code.");
+   if ($charcount < 80) {        
+  echo ("<A HREF=\'https://www.drupal.org/coding-standards\'>Drupal coding standards</a> requires 80 characters per line.");   echo ("Your text could have <strong>$char80linedrupalcode</strong> more characters and meet this standard.");
+   } else {    echo (" Cut <strong>$char80drupcodeover</strong> characters from your line of Drupal code.");
     }
    
-   
+echo ("<hr>Contribute new ideas at <A HREF='https://github.com/Robdev1/character-count-coach/tree/master' TARGET=new>Robdev1's Github page for this character count coach</a> project.");
    
 ?>  
